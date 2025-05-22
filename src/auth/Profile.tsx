@@ -21,14 +21,24 @@ function Profile() {
 
     useEffect(() => {
         const token = sessionStorage.getItem("token");
-        const userData = JSON.parse(sessionStorage.getItem("currentUser") || '{"name": ""}');
+        const userData = JSON.parse(sessionStorage.getItem("currentUser") || '{"name": "", "email": ""}');
         setUser(userData);
+
         const isValid = verifyToken(token || '');
+
         if (!token || !isValid) {
-            alert("Invalid or expired token. Please login again.");
+            if (!sessionStorage.getItem("alertShown")) {
+                alert("Invalid or expired token. Please login again.");
+                sessionStorage.setItem("alertShown", "true"); // prevent repeat alert
+            }
+
             navigate("/login");
+            return;
         }
+       
+        sessionStorage.removeItem("alertShown");
     }, []);
+    
 
     
     ////////////////////////////////////////////////////////////////////////////////////////////

@@ -64,7 +64,7 @@ function Login() {
                         <label htmlFor="password" className="bg-[#F7F8F9] text-[#6e25ffd0] pl-1 pr-4 absolute -top-2 left-5 h-fit leading-4 Rubik-medium text-sm"> Password<span className="text-[#F7F8F9]">000</span></label>
                     </div>
 
-                    <button type="button" onClick={handleLogin} className="w-full bg-[#CBCBCB] Rubik-medium text-white text-base h-12 mt-5 rounded-lg cursor-pointer active:scale-95 duration-300">Login</button>
+                    <button type="button" onClick={handleLogin} className="w-full bg-[#CBCBCB] Rubik-medium text-white hover:bg-[#6e25ffd0] hover:text-white text-base h-12 mt-5 rounded-lg cursor-pointer active:scale-95 duration-300">Login</button>
                 </form>
             </div>
         </>

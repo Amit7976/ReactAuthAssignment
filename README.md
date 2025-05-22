@@ -1,54 +1,92 @@
-# React + TypeScript + Vite
+# 🔐 Simple Authentication in React JS (Qualifier Task)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **pixel-perfect authentication system** built using **React + Vite + TypeScript**, implementing JWT-based login and registration as per the design shared in the qualifier task.
 
-Currently, two official plugins are available:
+Hosted on: [🔗 View Live Demo](https://reactauthassignment.netlify.app/)  
+GitHub Repository: [📁 View Code on GitHub](https://github.com/Amit7976/ReactAuthAssignment)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📋 Task Requirements (Fulfilled ✅)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+> **Qualifier task for interview**  
+> You need to code for the given design in React JS and share the code on a GitHub repository and host the project on Netlify or any hosting services.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### ✅ Delivered:
+- 🔳 **Design Pixel-perfect** (as per [Adobe XD Design](https://xd.adobe.com/view/b68eea25-003d-4a5d-8fdd-d463eeb20b32-e3dd))
+- ⚙️ **Clean, modular, and well-formatted code**
+- 📱 **Mobile interface centered and responsive**
+- 🔁 **Seamless navigation between pages**
+- ☁️ **Hosted on Netlify/Vercel**
+- 🧪 **JWT authentication implemented**
+- 💾 **Session-based token and user storage**
+- 📁 **Users data handled via local JSON file**
+
+---
+
+## ⚙️ Tech Stack
+
+- **React + Vite + TypeScript**
+- **React Router DOM** – for routing between pages
+- **JWT** – for token-based authentication (handled on the client-side using `jwt-simple`)
+- **React Icons** – for iconography
+- **Session Storage** – to store auth tokens and current user info
+- **Local JSON** – used as a stand-in for a real database (`data/users.json`)
+
+---
+
+## 🗂️ Folder Structure
+
+```
+src/
+├── auth/
+│ ├── Auth.tsx # Parent auth component
+│ ├── Login.tsx # Login page with JWT token generation
+│ ├── Register.tsx # Registration page (writes to local JSON)
+│ └── Profile.tsx # Protected profile page with token validation
+│
+├── data/
+│ └── users.json # Stores initially registered users (used for login/register)
+│
+├── utils/
+│ └── auth.ts # Token generation & verification helpers
+│
+└── App.tsx # Routes and layout setup
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔐 Authentication Flow
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- Upon registration, user data is saved in `data/users.json` (simulating a backend).
+- On login, credentials are verified against this JSON file.
+- If valid, a **JWT token is generated** using `jwt-simple` and stored in `sessionStorage`.
+- On visiting the profile page, the token is validated to grant access.
+- Token expiration and invalidation are also handled gracefully.
+
+---
+
+## 🚀 How to Run Locally
+
+```bash
+
+git clone https://github.com/Amit7976/ReactAuthAssignment
+cd simple-auth-react
+npm install
+npm run dev
+
 ```
+📝 Notes
+Since this is a frontend-only simulation, writing to the data/users.json file won't persist across reloads without backend logic. It's used for demonstration only.
+
+If using this in production, ensure that JWTs are stored in HttpOnly cookies for security, and user data is fetched/stored via an API backend.
+
+
+
+
+## Amit Gupta
+
+[🔗 Portfolio](https://portfolio-amit7976s-projects.vercel.app/)
+
+📧 guptaamit60600@gmail.com

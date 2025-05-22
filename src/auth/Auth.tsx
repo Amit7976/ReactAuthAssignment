@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom"
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"
+import { verifyToken } from "../utils/auth";
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -6,6 +8,17 @@ import { Link } from "react-router-dom"
 
 
 function Auth() {
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    const isValid = verifyToken(token || "");
+    if (token || isValid) {
+      navigate("/profile");
+    }
+  }, []);
+
+
   return (
     <>
       <div className="p-6 pb-10 absolute bottom-0">
