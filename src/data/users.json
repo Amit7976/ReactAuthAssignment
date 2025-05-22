@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Amit Gupta",
+        "email": "amit@example.com",
+        "password": "123456",
+        "phoneNumber": "9876543210",
+        "agency": "Yes",
+        "companyName": "MyCompany"
+    }
+]

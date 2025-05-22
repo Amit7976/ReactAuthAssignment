@@ -1,0 +1,42 @@
+import jwtEncode from "jwt-encode";
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+const SECRET_KEY = "your_secret_key";
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+interface User {
+  email: string;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+export const generateToken = (user: User) => {
+  const payload = {
+    email: user.email,
+    timestamp: Date.now(),
+  };
+  return jwtEncode(payload, SECRET_KEY);
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+interface TokenPayload {
+    email: string;
+    timestamp: number;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+export const verifyToken = (token: string): TokenPayload | null => {
+    try {
+        const parts: string[] = token.split(".");
+        if (parts.length !== 3) return null;
+
+        const payload: TokenPayload = JSON.parse(atob(parts[1]));
+        return payload;
+    } catch (err) {
+        return null;
+    }
+};
